@@ -1,0 +1,18 @@
+{
+	"admin":"ВАШ ID",
+	"logs.show":true,
+	
+	"prefix":"!",
+	"EventNotify":1,
+	
+	"antiflood":true,
+	"antiflood_delaytime":3,
+	"antiflood_warning":3,
+	"antiflood_bantime":5,
+	
+	"group.token":"xxx",
+	"key.secret":"xxx",
+	"group.token.confirmation":"xxx",
+	
+	"vkapi.version":"5.124"
+}

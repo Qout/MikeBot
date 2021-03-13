@@ -1,0 +1,19 @@
+[
+	{
+		"title":		"You Title",
+		"ip":			"You IP",
+		"port":			"0",
+		"password":		"rcon password",
+		
+		"mysql":
+		[
+			{
+				"host":				"xxx",
+				"database":			"xxx",
+				"user":				"xxx",
+				"pass":				"xxx",
+				"port":				"3306"
+			}
+		]
+	}
+]
