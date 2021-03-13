@@ -140,16 +140,6 @@ class HandlerMessages
 					// Проверяем, является-ли сообщение пустым
 					if (!empty (trim ($message)))
 					{
-						// @Устаревший код
-						/*$info = $this->classes [1]->Inquiry ('users.get', ['user_ids' => $user_id]);
-						$info [0]['first_name'] = NormalString ($info [0]['first_name']);
-						$info [0]['last_name']  = NormalString ($info [0]['last_name']);
-						
-						// Если Пользователь впервые воспользовался ботом
-						if (!$this->classes [4]->query ("SELECT * FROM MikeDb WHERE user_id = '{$user_id}'", 'array:assoc'))
-							$this->classes [4]->query ("INSERT INTO MikeDb (user_id, fname, lname, MEvents, flood, ban, access, unickey, money, opencase, likes, dislikes, listrep) VALUES('{$user_id}', '{$info [0]['first_name']}', '{$info [0]['last_name']}', '', '".base64_encode(json_encode (['time' => 0, 'warning' => 0]))."', '".base64_encode(json_encode (['ban' => false, 'time' => 0, 'warning' => 0, 'description' => null]))."', '0', '', '0', '".(time () - 300)."', '0', '0', '')", 'q');
-						*/
-						
 						// @Добавляем Пользователя в бд если его нету в системе бота
 						if (is_bool (($userInfo = RegUser ($user_id))))
 							$userInfo = $this->classes [4]->query ("SELECT * FROM MikeDb WHERE user_id = '{$user_id}';", 'array:assoc') [0];
