@@ -350,7 +350,7 @@ class MEvents
 					
 					$getMsg = $Control->getm ();
 					$edit = explode ("\n", $getMsg ['message']);
-					$edit [3] = "├✨ Репутация: 👍🏻 {$likes} / 👎🏻 {$dislikes}";
+					$edit [4] = "├✨ Репутация: 👍🏻 {$likes} / 👎🏻 {$dislikes}";
 					$Control->editm (implode ("\n", $edit), $getMsg ['keyboard']);
 					
 					$Control->popup ('Вы поставили ' . ($Status ? 'лайк 👍🏻' : 'дизлайк 👎🏻'));
