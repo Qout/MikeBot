@@ -147,4 +147,12 @@ function CountArgs ()
 	return @count ($GLOBALS ['__params']);
 }
 
+function BEGet(string $string, string $begin, string $end)
+{
+	if (StrContains($string, $begin) && StrContains($string, $end))
+		return @explode ($end, @explode ($begin, $string) [1]) [0];
+
+	return NULL;
+}
+
 ?>

@@ -14,7 +14,6 @@
 	{
 		if (IsAdmin)
 		{
-			$iCountParams = count ($info [0]);
 			$bDefId = true;
 			$giveout = 0;
 			
@@ -22,9 +21,9 @@
 			$money   = $info [2]['money'];
 			
 			
-			if ($iCountParams > 0)
+			if (CountArgs() > 0)
 			{
-				$iBuffer = $info [0][0];
+				$iBuffer = CmdArgs(1);
 				
 				if (is_numeric ($iBuffer))
 				{
@@ -34,11 +33,10 @@
 				}
 				
 				// @Обрабатываем 2 параметр
-				if (count ($info [0]) >= 2)
-				{
-					$iBuffer = $info [0][1];
-					if (is_numeric ($iBuffer))$user_id = $iBuffer;
-				}
+				if (($iBuffer = CmdArgs(2))
+					&& !empty($iBuffer)
+					&& is_numeric ($iBuffer))
+						$user_id = $iBuffer;
 				
 				$bDefId = $user_id == $info [2]['user_id'];
 				

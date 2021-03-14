@@ -95,7 +95,7 @@ else
 	global $funcs, $KeyBoard, $HTTP, $Api,
 			$Callback, $Handler, $Control,
 			$db, $MySql, $ServerControl,
-			$AdminId, $SteamIdConvertб, $EventNotifier;
+			$AdminId, $SteamIdConvert, $EventNotifier;
 	
 	$AdminId = str_replace (['https', 'http', ':', '/', 'vk', '.', 'com', 'id', ' '], '', strtolower ($settings ['admin']));
 	$EventNotifier = $settings ['EventNotify'] == 1 ? true : false;

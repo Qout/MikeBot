@@ -10,7 +10,16 @@ class SteamIDConverter
     protected function getCommunityFromID($id)
     {
         $accountarray = explode(':', $id);
-        return bcadd(bcmul($accountarray[2], 2), bcadd($accountarray[1], '76561197960265728'));
+        if (count($accountarray) == 3
+            && is_numeric($accountarray[1])
+            && (int)$accountarray[1] >= 0
+            && is_numeric($accountarray[2])
+            && (int)$accountarray[2] > 0)
+        {
+            $_ret = bcadd(bcmul($accountarray[2], 2), bcadd($accountarray[1], '76561197960265728'));
+            return $_ret;
+        }
+        else return NULL;
     }
 	
     protected function getIDFromCommunity($id, bool $gameid = true)
@@ -27,8 +36,9 @@ class SteamIDConverter
             $idnum  =   '1';
             $temp   =   bcsub($id, bcadd($constant, '1'));
         }
-		
-        return "STEAM_{$gameid}:{$idnum}:" . number_format(bcdiv($temp, '2'), 0, '', '');
+
+        $_id = number_format(bcdiv($temp, '2'), 0, '', '');
+        return (int)$_id > 0 ? "STEAM_{$gameid}:{$idnum}:{$_id}" : NULL;
     }
 }
 

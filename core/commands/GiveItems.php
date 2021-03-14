@@ -18,12 +18,12 @@
 		if (IsAdmin)
 		{
 			$SteamId = @base64_decode ($info [2]['steamid']);
-			$iParams = count ($info [0]);
+			$iParams = CountArgs();
 			
 			if ($iParams == 2)
 			{
-				$Category = $info [0][0];
-				$ItemName = $info [0][1];
+				$Category = CmdArgs(1);
+				$ItemName = CmdArgs(2);
 				
 				if (empty ($SteamId))
 				{
@@ -33,9 +33,9 @@
 			}
 			elseif ($iParams > 2)
 			{
-				$SteamId = $info [0][0];
-				$Category = $info [0][1];
-				$ItemName = $info [0][2];
+				$SteamId  = CmdArgs(1);
+				$Category = CmdArgs(2);
+				$ItemName = CmdArgs(3);
 			}
 			else
 			{

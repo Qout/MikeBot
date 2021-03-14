@@ -14,13 +14,12 @@
 /* Работа команды */
     $funcs [$name]['func'] = function (array $info) use ($Control, $KeyBoard, $db): void
     {
-		$iCountParams = count ($info [0]);
 		$user_id = (array_key_exists ('reply_message', (array)$info [1]->message) ? $info [1]->message->reply_message->from_id : $info [2]['user_id']);
 		$balance = 0;
 		
-		if ($iCountParams > 0)
+		if (CountArgs() > 0)
 		{
-			$iBuffer = $info [0][0];
+			$iBuffer = CmdArgs(1);
 			if (is_numeric ($iBuffer))$user_id = $iBuffer;
 		}
 		
@@ -35,11 +34,18 @@
 			$dislikes = @$UserInfo ['dislikes'];
 			$dislikes = $dislikes == '' ? 0 : $dislikes;
 			
+			$Steam = 'Steam не привязан';
+			if (!empty (trim (@$UserInfo ['steamid'])))
+			{
+				$Steam = @base64_decode ($UserInfo ['steamid']);
+				$Steam = "{$Steam}\n├👾 https://steamcommunity.com/profiles/" . __l(SteamId)->Convert ($Steam);
+			}
+
 			$msg = [
 			
 				"┌👤 Профиль: [id{$user_id}|{$UserInfo ['fname']} {$UserInfo ['lname']}].",
 				"├&#127380;: {$user_id}.",
-				("├&#127918; SteamId: " . (!empty (trim (@$UserInfo ['steamid'])) ? @base64_decode ($UserInfo ['steamid']) : 'Steam не привязан')),
+				"├&#127918; SteamId: {$Steam}",
 				"├✨ Репутация: 👍🏻 {$likes} / 👎🏻 {$dislikes}",
 				"├&#128179; Баланс: {$UserInfo ['money']} руб.",
 				("└⛔ Блокировка в боте: " . ($IsBanBot ? 'Да' : 'Нет') . '.')

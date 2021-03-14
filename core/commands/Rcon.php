@@ -14,9 +14,9 @@
 	{
 		if (IsAdmin)
 		{
-			if (count ($info [0]) >= 2)
+			if (CountArgs() >= 2)
 			{
-				$ServerId = $info [0][0];
+				$ServerId = CmdArgs(1);
 				
 				if (is_numeric ($ServerId))
 				{

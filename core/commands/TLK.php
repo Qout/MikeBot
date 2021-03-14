@@ -27,7 +27,7 @@
 				
 				$id = -1;
 				$sid = 0;
-				$rub = (count ($info [0]) >= 1 ? $info [0][0] : $info [2]['money']);
+				$rub = (CountArgs() > 0 ? CmdArgs(1) : $info [2]['money']);
 				
 				if (!is_numeric ($rub))
 					$Control->printm ('❗ Ошибка, пожалуйста, укажите нормально рубли.');

@@ -28,10 +28,10 @@
 				$VisGEO = false;
 				$VisIP = false;
 				
-				if (count ($info [0]) == 1)
+				if (CountArgs() == 1)
 				{
 					$__find = true;
-					$subCommand = strtolower ($info [0][0]);
+					$subCommand = strtolower (CmdArgs(1));
 					
 					if ($subCommand == 'steam')
 						$VisSteam = true;
@@ -53,11 +53,9 @@
 						}
 					}
 					else $__find = false;
-					
-					if ($__find)unset ($info [0][0]);
 				}
 				
-				if (count ($info [0]) == 0)
+				if (CountArgs() == 0 || $__find)
 				{
 					$Info 		  = explode ('|', explode ('Info: ', $ArrayData [1]) [1]);
 					
@@ -199,7 +197,10 @@
 						$first_name = $info [2]['fname'];
 						$last_name 	= $info [2]['lname'];
 						
-						$message 	= @trim (NormalString (implode (' ', $info [0])));
+						$message = explode (' ', $info [1]->message->text);
+						unset ($message [0]);
+
+						$message 	= @trim (NormalString ($message));
 						if (mb_strlen ($message) > 64)
 							$Control->printm ('❗ Ошибка, Вы привысили максимальное кол-во символов на отправку сообщения. Максимум 64 символа.');
 						elseif (empty ($message))

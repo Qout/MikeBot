@@ -14,7 +14,7 @@
 	{
 		if (IsAdmin)
 		{
-			if (count ($info [0]) >= 1)
+			if (CountArgs() > 0)
 			{
 				$params = explode (' ', $info [1]->message->text);
 				unset ($params [0]);
