@@ -200,7 +200,7 @@
 						$message = explode (' ', $info [1]->message->text);
 						unset ($message [0]);
 
-						$message 	= @trim (NormalString ($message));
+						$message 	= @trim (NormalString (implode (' ', $message)));
 						if (mb_strlen ($message) > 64)
 							$Control->printm ('❗ Ошибка, Вы привысили максимальное кол-во символов на отправку сообщения. Максимум 64 символа.');
 						elseif (empty ($message))
