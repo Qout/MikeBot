@@ -90,7 +90,7 @@
 						$PlayerInfo = @explode ('|', $PlayersArray [$i+1]);
 						if (count ($PlayerInfo) >= 3)
 						{
-							$Flags 		= $PlayerInfo [count ($PlayerInfo)-1];
+							$Flags 		= $PlayerInfo [2];
 							$Admin 		= ['access' => false, 'ico' => null, 'color' => null];
 							
 							if ($Flags > 0)
